@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Course List</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+	<!-- Include Bootstrap JavaScript for proper functionality -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div>
+			<h2>Courses we Offer</h2>
+			<div align="left">
+				<h3><a th:href="@{/Course/addcourse}">Add New Course</a></h3>
+			</div>
+
+			<div class="col-sm-8" align="center">
+				<div class="panel-body" align="center">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th>Course ID</th>
+								<th>Course Name</th>
+								<th>Duration Days</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="course : ${listcourse}">
+								<td th:text="${course.id}">Course ID</td>
+								<td th:text="${course.coursename}">Course Name</td>
+								<td th:text="${course.duration}">Duration</td>
+								<td>
+									<a th:href="@{/Course/edit/{id}(id=${course.id})}">Edit</a>
+								</td>
+								<td>
+									<a th:href="@{/Course/delete/{id}(id=${course.id})}">Delete</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<button> <a th:href="@{/}">Back to home page</a></button>
+		</div>
+	</div>
+</body>
+
+</html>

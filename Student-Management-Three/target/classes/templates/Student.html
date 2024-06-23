@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Student Registration</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+</head>
+
+<body>
+
+	<div class="container">
+		<h2>Student Registration</h2>
+		<div class="pull-left">
+			<h3><a th:href="@{/Student/addstudent}">Add new Student</a></h3>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="panel-body">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th>Student ID</th>
+								<th>Student Name</th>
+								<th>Course ID</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="student : ${liststudent}">
+								<td th:text="${student.id}">Student ID</td>
+								<td th:text="${student.studentname}">Student Name</td>
+								<td th:text="${student.coursename}">CourseID</td>
+								<td>
+									<a th:href="@{/Student/edit/{id}(id=${student.id})}">Edit</a>
+								</td>
+								<td>
+									<a th:href="@{/Student/delete/{id}(id=${student.id})}">Delete</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Available Courses</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<th>Course Name</th>
+								<th>Course ID</th>
+							</tr>
+							<tr th:each="course : ${listcourse}">
+								<td th:text="${course.coursename}">Course Name</td>
+								<td th:text="${course.id}">Course ID</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button> <a th:href="@{/}">Back to home page</a></button>
+	</div>
+
+</body>
+
+</html>

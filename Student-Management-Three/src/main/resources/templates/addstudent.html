@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Student Registration</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<div>
+		<h2>Student Registration</h2>
+
+		<div class="col-sm-8" align="center">
+			<div class="panel-body" align="center">
+				<form th:action="@{/Student/save}" method="post" th:object="${student}">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+
+								<th>Student Name</th>
+								<th>Course Name</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="text" th:field="*{studentname}" /></td>
+								<td>
+									<select th:field="*{coursename}">
+										<option th:each="course : ${listcourse}" th:value="${course.id}"
+											th:text="${course.coursename}"></option>
+									</select>
+								</td>
+								<td><a th:href="@{'/Student/edit/' + ${student.id}}">Edit</a></td>
+								<td><a th:href="@{'/Student/delete/' + ${student.id}}">Delete</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="submit">Save</button>
+
+					<!--	<button><a th:href="@{/Student/addstudent}">Add new</a></button>-->
+				</form>
+			</div>
+		</div>
+		<button> <a th:href="@{/Student/}">Back to Student table</a></button>
+	</div>
+
+</body>
+
+</html>

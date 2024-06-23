@@ -1,0 +1,9 @@
+com\example\Student\Management\Three\controller\StudentController.class
+com\example\Student\Management\Three\entity\Student.class
+com\example\Student\Management\Three\repository\StudentRepository.class
+com\example\Student\Management\Three\service\Courseservice.class
+com\example\Student\Management\Three\StudentManagementThreeApplication.class
+com\example\Student\Management\Three\service\StudentService.class
+com\example\Student\Management\Three\repository\CourseRepository.class
+com\example\Student\Management\Three\entity\Course.class
+com\example\Student\Management\Three\controller\ClassController.class
